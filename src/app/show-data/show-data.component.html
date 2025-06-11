@@ -1,0 +1,138 @@
+<div class="background-wrapper">
+  <div class="signout-container position-absolute top-0 end-0 m-3">
+    <button type="button" class="btn btn-danger shadow-sm rounded-pill px-4 py-2 fw-semibold" (click)="SignOut()">
+      <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+    </button>
+  </div>
+  <div class="form-card">
+
+
+    <h2 class="mb-4 text-center text-black">Company Master</h2>
+    <form #companiesForm="ngForm" class="row g-3" novalidate>
+      <div class="col-md-6">
+        <label for="company_code" class="form-label text-black">Company Code<span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="company_code" [(ngModel)]="companies.Company_code"
+          name="Company_code" #company_code="ngModel" placeholder="Enter company code" required maxlength="10" />
+        <div *ngIf="company_code.invalid && (company_code.dirty || company_code.touched)" class="text-danger">
+          <div *ngIf="company_code.errors?.['required']">Company Code is required</div>
+          <div *ngIf="company_code.errors?.['maxlength']">Maximum 10 characters allowed</div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="company_name" class="form-label text-black">Company Name <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="company_name" [(ngModel)]="companies.Company_name"
+          name="Company_name" #company_name="ngModel" placeholder="Enter company name" required maxlength="100" />
+        <div *ngIf="company_name.invalid && (company_name.dirty || company_name.touched)" class="text-danger">
+          <div *ngIf="company_name.errors?.['required']">Company Name is required</div>
+          <div *ngIf="company_name.errors?.['maxlength']">Maximum 100 characters allowed</div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6">
+        <label for="gst_no" class="form-label text-black">GST Number<span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="gst_no" [(ngModel)]="companies.gst_no" name="gst_no"
+          #gst_no="ngModel" placeholder="Enter GST number" required maxlength="20" pattern="^[0-9A-Z]{0,20}$" />
+        <div *ngIf="gst_no.invalid && (gst_no.dirty || gst_no.touched)" class="text-danger">
+          <div *ngIf="gst_no.errors?.['maxlength']">Maximum 20 characters allowed</div>
+           <div *ngIf="gst_no.errors?.['required']">Gst_No  is required</div>
+          <div *ngIf="gst_no.errors?.['pattern']">Invalid GST format (only uppercase A-Z and 0-9)</div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="contact" class="form-label text-black">Contact Number<span class="text-danger">*</span></label>
+        <input type="tel" class="form-control" id="contact" [(ngModel)]="companies.contact" name="contact"
+          #contact="ngModel" placeholder="Enter contact number" required maxlength="10" pattern="^[6-9]\d{9}$"
+          inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+        <div *ngIf="contact.invalid && (contact.dirty || contact.touched)" class="text-danger">
+          <div *ngIf="contact.errors?.['required']">Contact Number is required</div>
+          <div *ngIf="contact.errors?.['pattern']">Enter a valid 10-digit Indian mobile number</div>
+        </div>
+      </div>
+
+
+      <div class="col-md-12">
+        <label for="address1" class="form-label text-black">Address 1<span class="text-danger">*</span></label>
+        <textarea class="form-control" id="address1" rows="2" [(ngModel)]="companies.address1" name="address1"
+          #address1="ngModel" placeholder="Enter address 1" required maxlength="255"></textarea>
+        <div *ngIf="address1.invalid && (address1.dirty || address1.touched)" class="text-danger">
+          <div *ngIf="address1.errors?.['required']">Address 1 is required</div>
+          <div *ngIf="address1.errors?.['maxlength']">Maximum 255 characters allowed</div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <label for="address2" class="form-label text-black">Address 2</label>
+        <textarea class="form-control" id="address2" rows="2" [(ngModel)]="companies.address2" name="address2"
+          #address2="ngModel" placeholder="Enter address 2" maxlength="255"></textarea>
+        <div *ngIf="address2.invalid && (address2.dirty || address2.touched)" class="text-danger">
+          <div *ngIf="address2.errors?.['maxlength']">Maximum 255 characters allowed</div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="state" class="form-label text-black">State<span class="text-danger">*</span></label>
+        <select class="form-select" id="state" [(ngModel)]="companies.state_id" name="state_id" #state_id="ngModel"
+          required>
+          <option selected disabled value="">Choose...</option>
+          <option *ngFor="let state of states" [value]="state.state_id">{{ state.state_name }}</option>
+        </select>
+        <div *ngIf="state_id.invalid && (state_id.dirty || state_id.touched)" class="text-danger">
+          State is required
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <label for="city" class="form-label text-black">City<span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="city" [(ngModel)]="companies.city" name="city" #city="ngModel"
+          placeholder="Enter city" required maxlength="100" />
+        <div *ngIf="city.invalid && (city.dirty || city.touched)" class="text-danger">
+          <div *ngIf="city.errors?.['required']">City is required</div>
+          <div *ngIf="city.errors?.['maxlength']">Maximum 100 characters allowed</div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="pincode" class="form-label text-black">Pincode<span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="pincode" [(ngModel)]="companies.pincode" name="pincode"
+          #pincode="ngModel" placeholder="Enter pincode" maxlength="6" required pattern="^[0-9]{6}$" inputmode="numeric"
+          oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+        <div *ngIf="pincode.invalid && (pincode.dirty || pincode.touched)" class="text-danger">
+          <div *ngIf="pincode.errors?.['required']">Pincode is required</div>
+          <div *ngIf="pincode.errors?.['pattern']">Pincode must be exactly 6 digits</div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="est_date" class="form-label text-black">Establishment Date<span class="text-danger">*</span></label>
+        <input type="date" class="form-control" id="est_date" [(ngModel)]="companies.est_date" name="est_date"
+          #est_date="ngModel" [max]="currentDate" required />
+        <div *ngIf="est_date.invalid && (est_date.dirty || est_date.touched)" class="text-danger">
+          Establishment Date is required
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="col-12 d-flex justify-content-center gap-3 mt-3">
+        <button type="button" class="btn btn-primary px-4" (click)="addcompanies(companiesForm)">Add</button>
+        <button type="button" class="btn btn-success px-4" (click)="save()">Save</button>
+        <button type="button" class="btn btn-danger px-4" (click)="deleteSelectedRows()">Delete Selected Rows</button>
+        <button type="button" class="btn btn-secondary px-4" (click)="clearForm(companiesForm)">Clear Form</button>
+        <button class="btn btn-success px-4" (click)="onExport()"><i class="fas fa-file-excel"></i> Export to Excel</button>
+
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<div class="container-fluid mt-3">
+  <!-- AG Grid Table -->
+  <ag-grid-angular class="ag-theme-alpine mt-4" rowSelection="multiple" (gridReady)="onGridReady($event)"
+    style="width: 100%; height: 300px;" [rowData]="rowData" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef"
+    (selectionChanged)="onSelectionChanged($event)" (rowDoubleClicked)="onRowDoubleClick($event)">
+  </ag-grid-angular>
+</div>

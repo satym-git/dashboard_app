@@ -1,0 +1,194 @@
+.required-star {
+  color: red;
+  font-weight: bold;
+}
+
+
+.background-wrapper {
+  background-image: url('../../assets/image/background.jpg'); // your image path
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.form-card {
+  background: rgba(255, 255, 255, 0.1); // transparent white
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 900px;
+}
+
+
+.container {
+  background-color:rgba(255, 255, 255, 0.849);
+  border-radius: 8px;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.15);
+}
+
+.container.mt-4 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 900px;
+  margin: 1.25rem auto;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+
+  /* Slimmer Top Border */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    border-radius: 8px 8px 0 0;
+  }
+
+  /* Adjust padding for top border */
+  padding-top: 2rem !important;
+
+  h2.mb-4.text-center {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem !important;
+    font-weight: 600;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(to right, #3498db, #2ecc71);
+      margin: 0.5rem auto 0;
+    }
+  }
+
+  .row.g-3 {
+    .form-label {
+      font-weight: 500;
+      color: black;
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .form-control, .form-select {
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      padding: 0.6rem 0.75rem;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+
+      &:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.15);
+      }
+    }
+
+    .col-12.d-flex.justify-content-center.gap-3.mt-3 {
+      margin-top: 1.5rem !important;
+
+      .btn {
+        padding: 0.5rem 1.25rem;
+        font-size: 0.85rem;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+      }
+    }
+  }
+}
+
+/* AG Grid - Compact */
+ag-grid-angular.ag-theme-alpine {
+  width: 100%;
+  height: 360px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-top: 3px solid #3498db;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  .ag-header {
+    background: #3498db !important;
+    color: white !important;
+    font-weight: 500;
+    font-size: 13px;
+    min-height: 36px !important;
+  }
+
+  .ag-header-cell {
+    padding: 0 0.8rem;
+  }
+
+  .ag-row {
+    font-size: 13px;
+    border-bottom: 1px solid #f1f1f1;
+    transition: all 0.15s ease;
+
+    &:hover {
+      background-color: #f8fafc !important;
+    }
+
+    &.ag-row-odd {
+      background-color: rgba(52, 152, 219, 0.03);
+    }
+  }
+
+  .ag-cell {
+    padding: 0 0.8rem;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .container.mt-4 {
+    padding: 1.25rem;
+    margin: 1rem auto;
+
+    h2.mb-4.text-center {
+      font-size: 1.3rem;
+      margin-bottom: 1.25rem !important;
+    }
+
+    .row.g-3 {
+      .col-12.d-flex.justify-content-center.gap-3.mt-3 {
+        .btn {
+          padding: 0.45rem 1rem;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  ag-grid-angular.ag-theme-alpine {
+    height: 300px;
+  }
+}
+.text-danger {
+  font-size: 0.875em;
+  margin-top: 0.25rem;
+}
+
+.ng-invalid:not(form).ng-touched:not(form),
+.ng-invalid:not(form).ng-dirty:not(form) {
+  border-color: #dc3545;
+}
+
+.unsaved-row {
+  background-color: #fff9c4 !important; /* light yellow */
+}
