@@ -215,7 +215,7 @@ export class ShowDataComponent implements OnInit {
     } = this.companies;
 
     // Required fields validation
-    if (!Company_code || !Company_name || !address1 || !state_id || !city || !pincode) {
+    if (!Company_code || !Company_name || !address1  || !city || !pincode) {
       alert('Please fill in all required fields: Company Code, Company Name, Address1, State, City, and Pincode.');
       return;
     }
